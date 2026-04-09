@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us — Master Mobile Tyres</title>
+  <meta name="description" content="Get in touch with Master Mobile Tyres via WhatsApp. Tell us your location and tyre size, and we'll get right back to you.">
+  <meta property="og:title" content="Contact Us — Master Mobile Tyres">
+  <meta property="og:description" content="Send us a message via WhatsApp with your tyre needs. Quick response guaranteed.">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+</head>
+<body>
+
+  <!-- ═══ NAVBAR ═══ -->
+  <nav class="navbar navbar-dark" id="navbar" role="navigation" aria-label="Main Navigation">
+    <div class="container">
+      <a href="/" class="nav-brand" aria-label="Master Mobile Tyres Home">
+        <div class="brand-icon">🛞</div>
+        <span>Master Mobile Tyres</span>
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="/">Home</a>
+        <a href="/services.html">Services</a>
+        <a href="/gallery.html">Gallery</a>
+        <a href="/contact.html" class="active">Contact</a>
+        <a href="/book.html" class="nav-cta" aria-label="Book an appointment now">Book Now</a>
+      </div>
+      <div class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" role="button" tabindex="0">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ═══ PAGE HERO ═══ -->
+  <section class="page-hero">
+    <div class="container">
+      <h1 data-aos="fade-up">Contact Us</h1>
+      <p data-aos="fade-up" data-aos-delay="100">Send us a message via WhatsApp and we'll get right back to you.</p>
+    </div>
+  </section>
+
+  <!-- ═══ CONTACT SECTION ═══ -->
+  <section class="section">
+    <div class="container">
+      <div class="contact-grid">
+
+        <div data-aos="fade-right">
+          <div class="section-header" style="text-align:left; margin-bottom:32px;">
+            <span class="label">Get In Touch</span>
+            <h2 style="font-size:2rem;">We'd Love to<br>Hear From You</h2>
+          </div>
+
+          <div class="contact-info-cards">
+            <a href="tel:+447455222494" class="contact-info-card">
+              <div class="icon">📞</div>
+              <div class="text">
+                <h4>Call Us</h4>
+                <p>+44 7455 222 494</p>
+              </div>
+            </a>
+            <a href="https://wa.me/447455222494" target="_blank" class="contact-info-card">
+              <div class="icon">💬</div>
+              <div class="text">
+                <h4>WhatsApp</h4>
+                <p>Message us directly</p>
+              </div>
+            </a>
+            <div class="contact-info-card">
+              <div class="icon">🕐</div>
+              <div class="text">
+                <h4>Hours</h4>
+                <p>24/7 — Always available</p>
+              </div>
+            </div>
+            <div class="contact-info-card">
+              <div class="icon">📍</div>
+              <div class="text">
+                <h4>Coverage</h4>
+                <p>London & surrounding areas</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div data-aos="fade-left">
+          <form id="contactForm" style="background: white; padding: 40px; border-radius: var(--radius-xl); box-shadow: var(--shadow-lg); border: 1px solid rgba(0,0,0,0.04);">
+            <h3 style="font-size:1.3rem; font-weight:700; margin-bottom:4px;">Send a Message</h3>
+            <p style="color:var(--text-secondary); font-size:0.9rem; margin-bottom:28px;">Your message will be sent directly via WhatsApp.</p>
+
+            <div class="form-group">
+              <label for="contactName">Your Name</label>
+              <input type="text" id="contactName" placeholder="John Smith" required>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="contactLocation">Your Location</label>
+                <input type="text" id="contactLocation" placeholder="e.g. East London" required>
+              </div>
+              <div class="form-group">
+                <label for="contactTyreSize">Tyre Size</label>
+                <input type="text" id="contactTyreSize" placeholder="e.g. 205/55 R16">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="contactMessage">Message</label>
+              <textarea id="contactMessage" placeholder="Tell us what you need — flat tyre, new tyres, puncture repair, etc." rows="4" required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width:100%;" aria-label="Send message via WhatsApp">
+              <span class="btn-icon">💬</span> Send via WhatsApp
+            </button>
+
+            <div class="whatsapp-note">
+              <span class="icon">💡</span>
+              <span>Clicking send will open WhatsApp with your pre-filled message.</span>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ MAP SECTION ═══ -->
+  <section class="section section-light" style="padding: 60px 0;">
+    <div class="container">
+      <div style="border-radius: var(--radius-xl); overflow: hidden; box-shadow: var(--shadow-lg);">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d158858.18239!2d-0.24168!3d51.52855!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8a00baf21de75%3A0x52963a5addd52a99!2sLondon%2C%20UK!5e0!3m2!1sen!2suk!4v1"
+          style="width:100%; height:400px; border:none;"
+          allowfullscreen=""
+          loading="lazy"
+          title="Master Mobile Tyres service area map"
+        ></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="footer" id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="brand-name">
+            <span style="font-size:1.4rem;">🛞</span> Master Mobile Tyres
+          </div>
+          <p>Your trusted 24/7 mobile tyre fitting service. Professional, fast, and always at your doorstep.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook"><span>📘</span></a>
+            <a href="#" aria-label="Instagram"><span>📸</span></a>
+            <a href="https://wa.me/447455222494" aria-label="WhatsApp" target="_blank"><span>💬</span></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <a href="/">Home</a>
+          <a href="/services.html">Services</a>
+          <a href="/gallery.html">Gallery</a>
+          <a href="/contact.html">Contact</a>
+          <a href="/book.html">Book Now</a>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <a href="/services.html">Emergency Fitting</a>
+          <a href="/services.html">Home Installation</a>
+          <a href="/services.html">Puncture Repair</a>
+          <a href="/services.html">Wheel Balancing</a>
+        </div>
+        <div class="footer-col">
+          <h4>Find Us</h4>
+          <div class="footer-map">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d158858.18239!2d-0.24168!3d51.52855!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8a00baf21de75%3A0x52963a5addd52a99!2sLondon%2C%20UK!5e0!3m2!1sen!2suk!4v1"
+              allowfullscreen=""
+              loading="lazy"
+              title="Master Mobile Tyres location map"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Master Mobile Tyres. All rights reserved.</span>
+        <span>Made with ❤️ for drivers everywhere</span>
+      </div>
+    </div>
+  </footer>
+
+  <a href="tel:+447455222494" class="fab" aria-label="Call us now" id="fab">📞</a>
+
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script src="gallery-data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
