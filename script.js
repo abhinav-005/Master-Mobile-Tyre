@@ -3,6 +3,33 @@
    ════════════════════════════════════════════════════════ */
 
 document.addEventListener('DOMContentLoaded', () => {
+  // ── Theme toggle ──
+  const themeToggle = document.getElementById('themeToggle');
+  const themeToggleIcon = document.getElementById('themeToggleIcon');
+  const themeToggleLabel = document.getElementById('themeToggleLabel');
+
+  const setTheme = (theme) => {
+    document.body.setAttribute('data-theme', theme);
+    if (themeToggleIcon) themeToggleIcon.textContent = theme === 'dark' ? '☀️' : '🌙';
+    if (themeToggleLabel) themeToggleLabel.textContent = theme === 'dark' ? 'Light' : 'Dark';
+  };
+
+  const savedTheme = localStorage.getItem('siteTheme');
+  if (savedTheme === 'dark' || savedTheme === 'light') {
+    setTheme(savedTheme);
+  } else {
+    setTheme('light');
+  }
+
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      const current = document.body.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+      const next = current === 'dark' ? 'light' : 'dark';
+      setTheme(next);
+      localStorage.setItem('siteTheme', next);
+    });
+  }
+
   // ── Init AOS ──
   if (typeof AOS !== 'undefined') {
     AOS.init({
@@ -10,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
       easing: 'ease-out-cubic',
       once: true,
       offset: 80,
-      disable: 'mobile'
+      disable: false
     });
   }
 
@@ -35,6 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
     navToggle.addEventListener('click', () => {
       navToggle.classList.toggle('active');
       navLinks.classList.toggle('active');
+      document.body.classList.toggle('menu-open', navLinks.classList.contains('active'));
     });
 
     // Close menu when clicking a link
@@ -42,6 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
       link.addEventListener('click', () => {
         navToggle.classList.remove('active');
         navLinks.classList.remove('active');
+        document.body.classList.remove('menu-open');
       });
     });
 
@@ -50,6 +79,16 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!navToggle.contains(e.target) && !navLinks.contains(e.target)) {
         navToggle.classList.remove('active');
         navLinks.classList.remove('active');
+        document.body.classList.remove('menu-open');
+      }
+    });
+
+    // Reset mobile nav state when resizing to desktop widths.
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 900) {
+        navToggle.classList.remove('active');
+        navLinks.classList.remove('active');
+        document.body.classList.remove('menu-open');
       }
     });
   }
@@ -72,12 +111,108 @@ document.addEventListener('DOMContentLoaded', () => {
 
       let msg = `Hi Master Mobile Tyres, my name is ${name}.`;
       msg += `\n📍 Location: ${location}`;
-      if (tyreSize) msg += `\n🛞 Tyre Size: ${tyreSize}`;
+      if (tyreSize) msg += `\nTyre Size: ${tyreSize}`;
       msg += `\n\n💬 ${message}`;
 
-      const whatsappUrl = `https://wa.me/447455222494?text=${encodeURIComponent(msg)}`;
+      const whatsappUrl = `https://wa.me/447771213157?text=${encodeURIComponent(msg)}`;
       window.open(whatsappUrl, '_blank');
     });
+  }
+
+  // ── About image slider ──
+  const aboutSlider = document.querySelector('.about-image-slider');
+  if (aboutSlider) {
+    const slides = Array.from(aboutSlider.querySelectorAll('.about-slide'));
+    const leftArrow = aboutSlider.querySelector('.about-slider-arrow.left');
+    const rightArrow = aboutSlider.querySelector('.about-slider-arrow.right');
+
+    if (slides.length > 1) {
+      let currentIndex = 0;
+      let isAnimating = false;
+      let autoTimer = null;
+
+      slides[0].classList.add('active');
+
+      const transitionTo = (nextIndex, direction) => {
+        if (isAnimating || nextIndex === currentIndex) return;
+        isAnimating = true;
+
+        const currentSlide = slides[currentIndex];
+        const nextSlide = slides[nextIndex];
+
+        nextSlide.style.transition = 'none';
+        currentSlide.style.transition = 'none';
+
+        if (direction === 'ltr') {
+          nextSlide.style.transform = 'translateX(-100%)';
+          currentSlide.style.transform = 'translateX(0)';
+        } else {
+          nextSlide.style.transform = 'translateX(100%)';
+          currentSlide.style.transform = 'translateX(0)';
+        }
+
+        nextSlide.style.opacity = '1';
+        nextSlide.classList.add('active');
+
+        // Force reflow so browser applies the start state before animating.
+        aboutSlider.offsetHeight;
+
+        nextSlide.style.transition = '';
+        currentSlide.style.transition = '';
+
+        if (direction === 'ltr') {
+          currentSlide.style.transform = 'translateX(100%)';
+        } else {
+          currentSlide.style.transform = 'translateX(-100%)';
+        }
+        currentSlide.style.opacity = '0';
+        nextSlide.style.transform = 'translateX(0)';
+
+        setTimeout(() => {
+          currentSlide.classList.remove('active');
+          currentSlide.style.transition = '';
+          currentSlide.style.transform = '';
+          currentSlide.style.opacity = '';
+          nextSlide.style.transition = '';
+          nextSlide.style.transform = '';
+          nextSlide.style.opacity = '';
+          currentIndex = nextIndex;
+          isAnimating = false;
+        }, 720);
+      };
+
+      const nextSlide = (direction = 'rtl') => {
+        const nextIndex = (currentIndex + 1) % slides.length;
+        transitionTo(nextIndex, direction);
+      };
+
+      const prevSlide = (direction = 'ltr') => {
+        const nextIndex = (currentIndex - 1 + slides.length) % slides.length;
+        transitionTo(nextIndex, direction);
+      };
+
+      const resetAuto = () => {
+        if (autoTimer) clearInterval(autoTimer);
+        // Automatic motion runs right-to-left.
+        autoTimer = setInterval(() => nextSlide('rtl'), 4200);
+      };
+
+      if (leftArrow) {
+        leftArrow.addEventListener('click', () => {
+          prevSlide('ltr');
+          resetAuto();
+        });
+      }
+
+      if (rightArrow) {
+        rightArrow.addEventListener('click', () => {
+          nextSlide('rtl');
+          resetAuto();
+        });
+      }
+
+      resetAuto();
+    }
   }
 
   // ── Gallery ──
@@ -95,7 +230,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (galleryEmpty) galleryEmpty.style.display = 'none';
 
         galleryImages.forEach((filename, i) => {
-          const url = 'uploads/' + filename;
+          const url = 'data/gallery/' + filename;
+          const fallbackUrl = 'data/resource/logo.png';
           const item = document.createElement('div');
           item.className = 'gallery-item';
           item.setAttribute('data-aos', 'fade-up');
@@ -104,7 +240,20 @@ document.addEventListener('DOMContentLoaded', () => {
             <img src="${url}" alt="Master Mobile Tyres gallery image" loading="lazy">
             <div class="overlay"><span>🔍</span></div>
           `;
-          item.addEventListener('click', () => openLightbox(url));
+          const img = item.querySelector('img');
+          if (img) {
+            img.addEventListener('error', () => {
+              if (img.src.endsWith('/logo.png')) return;
+              img.src = fallbackUrl;
+              img.alt = 'Gallery image unavailable';
+              item.dataset.galleryMissing = 'true';
+            });
+          }
+
+          item.addEventListener('click', () => {
+            if (item.dataset.galleryMissing === 'true') return;
+            openLightbox(url);
+          });
           galleryGrid.appendChild(item);
         });
 

@@ -17,7 +17,7 @@
   <nav class="navbar navbar-dark" id="navbar" role="navigation" aria-label="Main Navigation">
     <div class="container">
       <a href="index.html" class="nav-brand" aria-label="Master Mobile Tyres Home">
-        <div class="brand-icon">🛞</div>
+        <div class="brand-icon"><img src="data/resource/logo.png" alt="Master Mobile Tyres logo"></div>
         <span>Master Mobile Tyres</span>
       </a>
       <div class="nav-links" id="navLinks">
@@ -25,6 +25,10 @@
         <a href="services.html">Services</a>
         <a href="gallery.html">Gallery</a>
         <a href="contact.html">Contact</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+          <span class="theme-toggle-icon" id="themeToggleIcon">🌙</span>
+          <span class="theme-toggle-label" id="themeToggleLabel">Dark</span>
+        </button>
         <a href="book.html" class="nav-cta" aria-label="Book an appointment now">Book Now</a>
       </div>
       <div class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" role="button" tabindex="0">
@@ -51,7 +55,7 @@
         Professional tyre fitting, anywhere you are. Emergency call-outs, expert fitters, and unbeatable prices — 24 hours a day, 7 days a week.
       </p>
       <div class="hero-actions" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
-        <a href="tel:+447455222494" class="btn btn-primary btn-lg" aria-label="Call us now">
+        <a href="tel:+447771213157" class="btn btn-primary btn-lg" aria-label="Call us now">
           <span class="btn-icon">📞</span> Call Now
         </a>
         <a href="services.html" class="btn btn-secondary btn-lg" aria-label="View our services">
@@ -85,8 +89,18 @@
       <div class="about-grid">
         <div class="about-visual" data-aos="fade-right" data-aos-duration="800">
           <div class="about-visual-card">
-            <div class="icon-large">🚗</div>
-            <p>We bring the workshop to you — wherever you are, whenever you need us.</p>
+            <div class="about-image-slider" aria-label="Master Mobile Tyres service showcase">
+              <img class="about-slide" src="data/resource/Commercial-Tyres.webp" alt="Commercial tyre service">
+              <img class="about-slide" src="data/resource/download.webp" alt="Mobile tyre fitting van">
+              <img class="about-slide" src="data/resource/images.webp" alt="Tyre fitting in progress">
+              <img class="about-slide" src="data/resource/images (1).webp" alt="Completed tyre fitting">
+              <button class="about-slider-arrow left" aria-label="Show previous image" type="button">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path></svg>
+              </button>
+              <button class="about-slider-arrow right" aria-label="Show next image" type="button">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"></path></svg>
+              </button>
+            </div>
           </div>
           <div class="about-floating-badge">
             ⚡ Rapid Response
@@ -270,8 +284,8 @@
         One call is all it takes. We'll be at your location in no time.
       </p>
       <div data-aos="fade-up" data-aos-delay="200">
-        <a href="tel:+447455222494" class="btn btn-primary btn-lg" aria-label="Call Master Mobile Tyres">
-          <span class="btn-icon">📞</span> Call +44 7455 222494
+        <a href="tel:+447771213157" class="btn btn-primary btn-lg" aria-label="Call Master Mobile Tyres">
+          <span class="btn-icon">📞</span> Call +44 7771 213 157
         </a>
       </div>
     </div>
@@ -283,13 +297,13 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <div class="brand-name">
-            <span style="font-size:1.4rem;">🛞</span> Master Mobile Tyres
+            <img class="footer-logo" src="data/resource/logo.png" alt="Master Mobile Tyres logo"> Master Mobile Tyres
           </div>
           <p>Your trusted 24/7 mobile tyre fitting service. Professional, fast, and always at your doorstep.</p>
           <div class="footer-social">
             <a href="#" aria-label="Facebook"><span>📘</span></a>
             <a href="#" aria-label="Instagram"><span>📸</span></a>
-            <a href="https://wa.me/447455222494" aria-label="WhatsApp" target="_blank"><span>💬</span></a>
+            <a href="https://wa.me/447771213157" aria-label="WhatsApp" target="_blank"><span>💬</span></a>
           </div>
         </div>
         <div class="footer-col">
@@ -327,7 +341,7 @@
   </footer>
 
   <!-- ═══ FAB ═══ -->
-  <a href="tel:+447455222494" class="fab" aria-label="Call us now" id="fab">
+  <a href="tel:+447771213157" class="fab" aria-label="Call us now" id="fab">
     📞
   </a>
 
